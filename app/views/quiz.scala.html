@@ -1,4 +1,4 @@
-@(player1: Player, player2: Player)
+@(question: at.ac.tuwien.big.we14.lab2.api.Question, player1: at.ac.tuwien.big.we14.lab2.api.User, player2: at.ac.tuwien.big.we14.lab2.api.User)
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -48,7 +48,7 @@
                 
                 <form id="questionform" action="question.html" method="post">
                     <h2 id="questionheading" class="accessibility">Frage</h2>
-                    <p id="questiontext">Welche zwei LVAs werden im Model EWA zusammengefasst?</p>
+                    <p id="questiontext">@question.getText()</p>
                     <ul id="answers">
                         <li><input id="option1" type="checkbox"/><label for="option1">IT Strategie</label></li>
                         <li><input id="option2" type="checkbox"/><label for="option2">Web Engineering</label></li>
