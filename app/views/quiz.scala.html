@@ -1,4 +1,32 @@
-@(question: at.ac.tuwien.big.we14.lab2.api.Question, player1: at.ac.tuwien.big.we14.lab2.api.User, player2: at.ac.tuwien.big.we14.lab2.api.User)
+@(round: at.ac.tuwien.big.we14.lab2.api.Round, player1: at.ac.tuwien.big.we14.lab2.api.User, player2: at.ac.tuwien.big.we14.lab2.api.User)
+@import at.ac.tuwien.big.we14.lab2.api.impl._
+@import at.ac.tuwien.big.we14.lab2.api._
+
+@getAnswerClass(i: Int, user: User) = {
+	@if(round.getAnswer(i,user)!=null) {
+        if (round.getAnswer(i,user).isCorrect()) {
+             "correct" 
+        } else {
+            "incorrect"
+        }
+    } else {
+        "unknown"
+    }
+}
+@getAnswerDescription(i: Int, user: User) = {
+	@if(round.getAnswer(i,player1)!=null) {
+         if (round.getAnswer(i,player1).isCorrect()) {
+             "Richtig" 
+         } else {
+             "Falsch"
+         }
+     } else {
+       "Unbekannt"
+     }
+
+
+}
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -7,8 +35,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Business Informatics Group Quiz</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")" />
-        <script src="js/jquery.js" type="text/javascript"></script>
-        <script src="js/framework.js" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/framework.js")" type="text/javascript"></script>
     </head>
     <body id="questionpage">
         <a class="accessibility" href="#question">Zur Frage springen</a>
@@ -27,33 +55,41 @@
                 <div id="player1info">
                     <span id="player1name">@player1.getName()</span>
                     <ul class="playerroundsummary">
-                        <li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
-                        <li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="unknown">Unbekannt</span></li>
+						@for(i <- 0.to(2)) {
+                        <li><span class="accessibility">Frage @i:</span><span id=@("player1answer"+i) class=@getAnswerClass(i,player1)>
+                        	@getAnswerDescription(i, player1)	
+                        </span></li>
+                        }
                     </ul>
                 </div>
                 <div id="player2info">
                     <span id="player2name">@player2.getName()</span>
                     <ul class="playerroundsummary">
-                        <li><span class="accessibility">Frage 1:</span><span id="player2answer1" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 2:</span><span id="player2answer2" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 3:</span><span id="player2answer3" class="unknown">Unbekannt</span></li>
+                    	@for(i <- 0.to(2)) {
+                        <li><span class="accessibility">Frage @i:</span><span id=@("player2answer"+i) class=@getAnswerClass(i,player2)>
+                        @getAnswerDescription(i, player2)	
+                        </span></li>
+                        }
                     </ul>
                 </div>
-                <div id="currentcategory"><span class="accessibility">Kategorie:</span> Sport</div>
+                <div id="currentcategory"><span class="accessibility">Kategorie:</span>@round.getCurrentQuestion(player1).getCategory().getName()</div>
             </section>
             
             <!-- Question -->
             <section id="question" aria-labelledby="questionheading">
                 
-                <form id="questionform" action="question.html" method="post">
+                <form id="questionform" action="/game" method="post">
                     <h2 id="questionheading" class="accessibility">Frage</h2>
-                    <p id="questiontext">@question.getText()</p>
+                    <p id="questiontext">@round.getCurrentQuestion(player1).getText()</p>
+                    
+      
                     <ul id="answers">
-                        <li><input id="option1" type="checkbox"/><label for="option1">IT Strategie</label></li>
-                        <li><input id="option2" type="checkbox"/><label for="option2">Web Engineering</label></li>
-                        <li><input id="option3" type="checkbox"/><label for="option3">Semistrukturierte Daten</label></li>
-                        <li><input id="option4" type="checkbox"/><label for="option4">Objektorientierte Modellierung</label></li>
+	                    	@for((choice, j) <- round.getCurrentQuestion(player1).getAllChoices().zipWithIndex) {
+	                    		
+	                    		<li><input id={"option"+@j} type="checkbox"/><label for={"option"+@j}>@choice.getText()</label></li>
+	                    		
+	                    	}
+                    	
                     </ul>
                     <input id="timeleftvalue" type="hidden" value="100"/>
                     <input id="next" type="submit" value="weiter" accesskey="s"/>
@@ -79,7 +115,7 @@
             
             // initialize time
             $(document).ready(function(){
-		        var maxtime = 30;
+		        var maxtime = @round.getCurrentQuestion(player1).getMaxTime();
 		        var hiddenInput = $("#timeleftvalue");
 		        var meter = $("#timer meter");
 		        var timeleft = $("#timeleft");

@@ -1,4 +1,4 @@
-@(message: String)
+
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
@@ -21,7 +21,9 @@
         </nav>
         
         <section role="main" id="quiz">
-          <a id="startgame" href="question.html">Quiz starten</a>
+	        <form action="@{routes.GameController.startGame()}" method="GET">
+	       		<input type="submit" id="startgame" name="action" value = "Quiz starten"/>
+	        </form>
         </section>
 
         <!-- footer -->
