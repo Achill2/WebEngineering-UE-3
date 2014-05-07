@@ -1,3 +1,30 @@
+@(game: at.ac.tuwien.big.we14.lab2.api.QuizGame)
+@import at.ac.tuwien.big.we14.lab2.api.impl._
+@import at.ac.tuwien.big.we14.lab2.api._
+
+@getAnswerClass(i: Int, user: User) = {
+	@if(game.getCurrentRound().getAnswer(i,user)!=null) {
+        @if(game.getCurrentRound().getAnswer(i,user).isCorrect()) {
+             "correct" 
+        } else {
+            "incorrect"
+        }
+    } else {
+        "unknown"
+    }
+}
+@getAnswerDescription(i: Int, user: User) = {
+	@if(game.getCurrentRound().getAnswer(i,user)!=null) {
+         @if(game.getCurrentRound().getAnswer(i,user).isCorrect()) {
+             "Richtig" 
+         } else {
+             "Falsch"
+         }
+     } else {
+       "Unbekannt"
+     }
+}
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -23,31 +50,37 @@
             <!-- winner message -->
             <section id="roundwinner" aria-labelledby="roundwinnerheading">
                 <h2 id="roundwinnerheading" class="accessibility">Rundenzwischenstand</h2>
-                <p class="roundwinnermessage">Spieler 2 gewinnt Runde 1!</p>
+                <p class="roundwinnermessage">Spieler @game.getCurrentRound().getRoundWinner().getName() gewinnt Runde @game.getCurrentRoundCount()!</p>
             </section>
         
             <!-- round info -->    
             <section id="roundinfo" aria-labelledby="roundinfoheading">
                 <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
                 <div id="player1info" class="playerinfo">
-                    <span id="player1name" class="playername">Spieler 1</span>
+                    <span id="player1name">@game.getPlayers().get(0).getName()</span>
                     <ul class="playerroundsummary">
-                        <li><span class="accessibility">Frage 1:</span><span id="player1answer1" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 2:</span><span id="player1answer2" class="incorrect">Falsch</span></li>
-                        <li><span class="accessibility">Frage 3:</span><span id="player1answer3" class="correct">Richtig</span></li>
+						@for(i <- 0.to(2)) {
+                        <li><span class="accessibility">Frage @i:</span><span id=@("player1answer"+i) class=@getAnswerClass(i,game.getPlayers().get(0))>
+                        	@getAnswerDescription(i, game.getPlayers().get(0))	
+                        </span></li>
+                        }
                     </ul>
-                    <p id="player1roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player1wonrounds" class="playerwonrounds">2</span></p>
+                    <p id="player1roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player1wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(0))</span></p>
                 </div>
                 <div id="player2info" class="playerinfo">
-                    <span id="player2name" class="playername">Spieler 2</span>
+                    <span id="player2name">@game.getPlayers().get(1).getName()</span>
                     <ul class="playerroundsummary">
-                        <li><span class="accessibility">Frage 1:</span><span id="player2answer1" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 2:</span><span id="player2answer2" class="correct">Richtig</span></li>
-                        <li><span class="accessibility">Frage 3:</span><span id="player2answer3" class="correct">Richtig</span></li>
+                    	@for(i <- 0.to(2)) {
+                        <li><span class="accessibility">Frage @i:</span><span id=@("player2answer"+i) class=@getAnswerClass(i,game.getPlayers().get(1))>
+                        @getAnswerDescription(i, game.getPlayers().get(1))	
+                        </span></li>
+                        }
                     </ul>
-                    <p id="player2roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player2wonrounds" class="playerwonrounds">1</span></p>
+                    <p id="player2roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player2wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(1))</span></p>
                 </div>
-                <a id="next" href="question.html">Weiter</a>
+                <form action="@routes.GameController.showQuestion()" method="GET">
+	       			<input type="submit" id="next" name="action" value = "Weiter"/>
+	        	</form>
             </section>
         </section>
 

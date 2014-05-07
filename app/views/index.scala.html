@@ -21,7 +21,7 @@
         </nav>
         
         <section role="main" id="quiz">
-	        <form action="@{routes.GameController.startGame()}" method="GET">
+	        <form action="@routes.GameController.showQuestion()" method="GET">
 	       		<input type="submit" id="startgame" name="action" value = "Quiz starten"/>
 	        </form>
         </section>
