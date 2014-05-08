@@ -2,9 +2,10 @@
 @import at.ac.tuwien.big.we14.lab2.api.impl._
 @import at.ac.tuwien.big.we14.lab2.api._
 
+
 @getAnswerClass(i: Int, user: User) = {
 	@if(round.getAnswer(i,user)!=null) {
-        if (round.getAnswer(i,user).isCorrect()) {
+        @if(round.getAnswer(i,user).isCorrect()) {
              "correct" 
         } else {
             "incorrect"
@@ -14,8 +15,8 @@
     }
 }
 @getAnswerDescription(i: Int, user: User) = {
-	@if(round.getAnswer(i,player1)!=null) {
-         if (round.getAnswer(i,player1).isCorrect()) {
+	@if(round.getAnswer(i,user)!=null) {
+         @if(round.getAnswer(i,user).isCorrect()) {
              "Richtig" 
          } else {
              "Falsch"
@@ -23,8 +24,6 @@
      } else {
        "Unbekannt"
      }
-
-
 }
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +77,7 @@
             <!-- Question -->
             <section id="question" aria-labelledby="questionheading">
                 
-                <form id="questionform" action="/game" method="post">
+                <form id="questionform" action="@routes.GameController.answerQuestion()" method="post">
                     <h2 id="questionheading" class="accessibility">Frage</h2>
                     <p id="questiontext">@round.getCurrentQuestion(player1).getText()</p>
                     
@@ -86,12 +85,12 @@
                     <ul id="answers">
 	                    	@for((choice, j) <- round.getCurrentQuestion(player1).getAllChoices().zipWithIndex) {
 	                    		
-	                    		<li><input id={"option"+@j} type="checkbox"/><label for={"option"+@j}>@choice.getText()</label></li>
+	                    		<li><input id={"option"+@j} type="checkbox" name="choices_ids[@j]" value=@choice.getId()/><label for={"option"+@j}>@choice.getText()</label></li>
 	                    		
 	                    	}
                     	
                     </ul>
-                    <input id="timeleftvalue" type="hidden" value="100"/>
+                    <input id="timeleftvalue" name="time" type="hidden" value="100"/>
                     <input id="next" type="submit" value="weiter" accesskey="s"/>
                 </form>
             </section>
