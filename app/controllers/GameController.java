@@ -3,7 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.AnswerData;
+import models.AnswerData;
 import akka.util.Collections;
 import at.ac.tuwien.big.we14.lab2.api.*;
 import at.ac.tuwien.big.we14.lab2.api.impl.*;
