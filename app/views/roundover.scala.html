@@ -1,6 +1,7 @@
 @(game: at.ac.tuwien.big.we14.lab2.api.QuizGame)
 @import at.ac.tuwien.big.we14.lab2.api.impl._
 @import at.ac.tuwien.big.we14.lab2.api._
+@import play.i18n._
 
 @getAnswerClass(i: Int, user: User) = {
 	@if(game.getCurrentRound().getAnswer(i,user)!=null) {
@@ -16,12 +17,12 @@
 @getAnswerDescription(i: Int, user: User) = {
 	@if(game.getCurrentRound().getAnswer(i,user)!=null) {
          @if(game.getCurrentRound().getAnswer(i,user).isCorrect()) {
-             "Richtig" 
+             @Messages.get("correct") 
          } else {
-             "Falsch"
+             @Messages.get("incorrect")
          }
      } else {
-       "Unbekannt"
+       @Messages.get("unknown")
      }
 }
 
@@ -31,55 +32,55 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Business Informatics Group Quiz - Zwischenstand</title>
+        <title>Business Informatics Group Quiz - @Messages.get("preliminary_result")</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")" />
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/framework.js" type="text/javascript"></script>
     </head>
     <body id="winnerpage">
-        <a class="accessibility" href="#roundwinner">Zur Rundenwertung springen</a>
+        <a class="accessibility" href="#roundwinner">@Messages.get("jump_to_roundresult")</a>
         <header role="banner" aria-labelledby="mainheading"><h1 id="mainheading"><span class="accessibility">Business Informatics Group</span> Quiz</h1></header>
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="logoutlink" title="Klicke hier um dich abzumelden" href="#" accesskey="l">Abmelden</a></li>
+                <li><a id="logoutlink" title="Klicke hier um dich abzumelden" href="#" accesskey="l">@Messages.get("logout")</a></li>
             </ul>
         </nav>
         
         <section role="main">
             <!-- winner message -->
             <section id="roundwinner" aria-labelledby="roundwinnerheading">
-                <h2 id="roundwinnerheading" class="accessibility">Rundenzwischenstand</h2>
-                <p class="roundwinnermessage">Spieler @game.getCurrentRound().getRoundWinner().getName() gewinnt Runde @game.getCurrentRoundCount()!</p>
+                <h2 id="roundwinnerheading" class="accessibility">@Messages.get("preliminary_roundresult")</h2>
+                <p class="roundwinnermessage">@Messages.get("roundwinner", game.getCurrentRound().getRoundWinner().getName(), ""+game.getCurrentRoundCount())</p>
             </section>
         
             <!-- round info -->    
             <section id="roundinfo" aria-labelledby="roundinfoheading">
-                <h2 id="roundinfoheading" class="accessibility">Spielerinformationen</h2>
+                <h2 id="roundinfoheading" class="accessibility">@Messages.get("player_information")</h2>
                 <div id="player1info" class="playerinfo">
                     <span id="player1name">@game.getPlayers().get(0).getName()</span>
                     <ul class="playerroundsummary">
 						@for(i <- 0.to(2)) {
-                        <li><span class="accessibility">Frage @i:</span><span id=@("player1answer"+i) class=@getAnswerClass(i,game.getPlayers().get(0))>
+                        <li><span class="accessibility">@Messages.get("question") @i:</span><span id=@("player1answer"+i) class=@getAnswerClass(i,game.getPlayers().get(0))>
                         	@getAnswerDescription(i, game.getPlayers().get(0))	
                         </span></li>
                         }
                     </ul>
-                    <p id="player1roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player1wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(0))</span></p>
+                    <p id="player1roundcounter" class="playerroundcounter">@Messages.get("won_rounds"): <span id="player1wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(0))</span></p>
                 </div>
                 <div id="player2info" class="playerinfo">
                     <span id="player2name">@game.getPlayers().get(1).getName()</span>
                     <ul class="playerroundsummary">
                     	@for(i <- 0.to(2)) {
-                        <li><span class="accessibility">Frage @i:</span><span id=@("player2answer"+i) class=@getAnswerClass(i,game.getPlayers().get(1))>
+                        <li><span class="accessibility">@Messages.get("question") @i:</span><span id=@("player2answer"+i) class=@getAnswerClass(i,game.getPlayers().get(1))>
                         @getAnswerDescription(i, game.getPlayers().get(1))	
                         </span></li>
                         }
                     </ul>
-                    <p id="player2roundcounter" class="playerroundcounter">Gewonnene Runden: <span id="player2wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(1))</span></p>
+                    <p id="player2roundcounter" class="playerroundcounter">@Messages.get("won_rounds"): <span id="player2wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(1))</span></p>
                 </div>
                 <form action="@routes.GameController.showQuestion()" method="GET">
-	       			<input type="submit" id="next" name="action" value = "Weiter"/>
+	       			<input type="submit" id="next" name="action" value = @Messages.get("next")/>
 	        	</form>
             </section>
         </section>

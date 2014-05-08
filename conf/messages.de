@@ -1,0 +1,34 @@
+category=Kategorie
+correct=Korrekt
+
+end_of_game=Spielende
+
+final_result=Endstand
+
+gamewinner=Spieler {0} gewinnt!
+
+incorrect=Falsch
+
+jump_to_question=Zur Frage springen
+jump_to_roundresult=Zur Rundenwertung springen
+jump_to_gameresult=Zur Spielwertung springen
+
+last_game=Letztes Spiel
+logout=Abmelden
+
+never=Nie
+new_game=Neues Spiel
+next=Weiter
+
+player_information=Spielerinformationen
+preliminary_result=Zwischenergebnis
+preliminary_roundresult=Rundenzwischenergebnis
+
+question=Frage
+
+remaining_time=Verbleibende Zeit
+roundwinner = Spieler {0} gewinnt Runde {1}!
+
+unknown=Unbekannt
+
+won_rounds=Gewonnene Runden
