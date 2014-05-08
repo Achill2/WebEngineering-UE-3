@@ -3,8 +3,17 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                           controllers.GameController.index()
 
+# Authentication
+GET		/login						controllers.Application.login()
+POST	/login						controllers.Application.authenticate()
+GET		/logout						controllers.Application.logout()
+
+# Registration
+
+GET		/register					controllers.Application.goToRegistration()
+POST	/register					controllers.Application.register()
 
 # Game
 GET		/game						controllers.GameController.startGame

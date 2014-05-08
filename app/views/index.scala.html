@@ -1,4 +1,4 @@
-
+@(userName: String)
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
@@ -16,7 +16,12 @@
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="logoutlink" href="#">Abmelden</a></li>
+                <li>
+                	@helper.form(routes.Application.logout){
+                		<input type="submit" id="logoutlink" value="Abmelden"/>
+                	}
+                @** <a id="logoutlink" href="#">Abmelden</a> **@
+                </li>
             </ul>
         </nav>
         

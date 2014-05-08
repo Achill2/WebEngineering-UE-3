@@ -1,3 +1,6 @@
+@(userForm: Form[PlayUser])
+@import helper._
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -21,9 +24,24 @@
         <section role="main" id="register" aria-labelledby="registerheading">
             <!-- Register section -->
             <h2 id="registerheading" class="accessibility">Registrierung</h2>
-            <form action="register.html" method="post">
+            
+            @form(routes.Application.register){
+@**            <form action="@{routes.Login.completeRegistration()}" method="POST">	**@
                 <fieldset>
                     <legend>Persönliche Daten</legend>
+                    
+                    @inputText(userForm("firstName"), '_label -> "Vorname:")
+                    @inputText(userForm("lastName"), '_label -> "Nachname:")
+                    @inputText(userForm("birthDate"), '_label -> "Geburtstag:")
+
+                    @select(
+                    	userForm("gender"),
+                    	options(Seq("Männlich", "Weiblich")),
+                    	'_label -> "Geschlecht:",
+                    	'_showConstraints -> false
+                    )
+
+@**********************************************************************
                     <label for="firstname">Vorname:</label>
                     <input id="firstname" type="text" name="firstName"/>
                     
@@ -39,9 +57,15 @@
                         <option value="m">Männlich</option>
                         <option value="f">Weiblich</option>
                     </select>
+************************************************************************@
                 </fieldset>
                 <fieldset>
                     <legend>Login Daten</legend>
+                    
+                    @inputText(userForm("userName"), '_label -> "Benutzername:", '_showConstraints -> false)
+                    @inputPassword(userForm("password"), '_label -> "Passwort:", '_showConstraints -> false)
+                    
+@**************************************************************************                    
                     <label for="username">Benutzername*:</label>
                     <input id="username" type="text" required="required" pattern="\w{4,8}" name="userName"/>
                     <div id="error_msg_username" class="hide" role="alert">Der Benutzername muss mindestens 4 Zeichen und darf maximal 8 Zeichen enthalten.</div>
@@ -49,10 +73,14 @@
                     <label for="password">Passwort*:</label>
                     <input id="password" type="password" required="required" pattern="\w{4,8}" name="password"/>
                     <div id="error_msg_password" class="hide" role="alert">Das Passwort muss mindestens 4 Zeichen und darf maximal 8 Zeichen enthalten.</div>
+**************************************************************************@
+
                     <input id="registersubmit" type="submit" value="Registrieren" accesskey="s"/>
                     <p id="requiredhint">Mit "*" gekennzeichnete Felder sind Pflichtfelder</p>
                 </fieldset>
-            </form>
+@**            </form>	**@
+				}
+
         </section>
 
         <!-- footer -->

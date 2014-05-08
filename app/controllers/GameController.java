@@ -4,13 +4,21 @@ import at.ac.tuwien.big.we14.lab2.api.*;
 import at.ac.tuwien.big.we14.lab2.api.impl.*;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.index;
 import views.html.quiz;
 
+@Security.Authenticated(Secured.class)
 public class GameController extends Controller {
 	
 	
 	private static QuizGame game; // TODO sinnvoll hier?
+	
+	public static Result index(){
+		
+		return ok(index.render(session().get("userName")));
+	}
+	
 	/**
 	 * start a new game 
 	 * @return
