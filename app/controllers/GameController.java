@@ -41,7 +41,7 @@ public class GameController extends Controller {
 		if (game == null || game.isGameOver()) {
 			// if not generate new Game
 			User user = new SimpleUser(); 		// TODO besser einbinden - ist jetzt einfach an dieser Stelle zum Testen 
-			user.setName("Test1");
+			user.setName(session().get("userName"));
 			
 			// generate new game TODO path angabe ausbessern?!
 //			Logger.info("sprache " + Messages.get("start_game"));
