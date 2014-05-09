@@ -29,6 +29,9 @@ question=Frage
 remaining_time=Verbleibende Zeit
 roundwinner = Spieler {0} gewinnt Runde {1}!
 
+start=Start
+start_quiz=Quiz starten
+
 unknown=Unbekannt
 
 won_rounds=Gewonnene Runden

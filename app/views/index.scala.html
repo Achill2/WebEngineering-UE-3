@@ -1,12 +1,14 @@
 @(userName: String)
 
+@import play.i18n._
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Business Informatics Group Quiz - Start</title>
+        <title>Business Informatics Group Quiz - @Messages.get("start")</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")" />
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/framework.js" type="text/javascript"></script>
@@ -18,16 +20,16 @@
             <ul>
                 <li>
                 	@helper.form(routes.Application.logout){
-                		<input type="submit" id="logoutlink" value="Abmelden"/>
+                		<input type="submit" id="logoutlink" value=@Messages.get("logout") />
                 	}
-                @** <a id="logoutlink" href="#">Abmelden</a> **@
+                @** <a id="logoutlink" href="#">@Messages.get("logout")</a> **@
                 </li>
             </ul>
         </nav>
         
         <section role="main" id="quiz">
 	        <form action="@routes.GameController.showQuestion()" method="GET">
-	       		<input type="submit" id="startgame" name="action" value = "Quiz starten"/>
+	       		<input type="submit" id="startgame" name="action" value=@Messages.get("start_quiz") />
 	        </form>
         </section>
 

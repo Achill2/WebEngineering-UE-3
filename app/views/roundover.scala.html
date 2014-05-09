@@ -1,4 +1,5 @@
 @(game: at.ac.tuwien.big.we14.lab2.api.QuizGame)
+
 @import at.ac.tuwien.big.we14.lab2.api.impl._
 @import at.ac.tuwien.big.we14.lab2.api._
 @import play.i18n._
@@ -80,7 +81,7 @@
                     <p id="player2roundcounter" class="playerroundcounter">@Messages.get("won_rounds"): <span id="player2wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(1))</span></p>
                 </div>
                 <form action="@routes.GameController.showQuestion()" method="GET">
-	       			<input type="submit" id="next" name="action" value = @Messages.get("next")/>
+	       			<input type="submit" id="next" name="action" value=@Messages.get("next") />
 	        	</form>
             </section>
         </section>

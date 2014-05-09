@@ -16,6 +16,7 @@ import views.html.index;
 import views.html.quiz;
 import views.html.quizover;
 import views.html.roundover;
+import play.api.i18n.*;
 
 @Security.Authenticated(Secured.class)
 public class GameController extends Controller {
@@ -34,7 +35,7 @@ public class GameController extends Controller {
 	 */
 	public static Result showQuestion() {
 		
-		
+
 
 		// check if a game is running
 		if (game == null || game.isGameOver()) {
@@ -43,7 +44,16 @@ public class GameController extends Controller {
 			user.setName("Test1");
 			
 			// generate new game TODO path angabe ausbessern?!
-			QuizFactory factory = new PlayQuizFactory("conf/data.de.json", user);
+//			Logger.info("sprache " + Messages.get("start_game"));
+			
+			String browser_language = play.api.i18n.Lang.defaultLang().language().toString();
+			String json_path = "conf/data.en.json";
+			if (browser_language.equals("de")) {
+				json_path = "conf/data.de.json";
+			}
+			
+			
+			QuizFactory factory = new PlayQuizFactory(json_path, user);
 			game = factory.createQuizGame();
 			// start first round
 			game.startNewRound();

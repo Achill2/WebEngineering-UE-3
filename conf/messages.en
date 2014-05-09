@@ -29,6 +29,9 @@ question=question
 remaining_time=remaining time
 roundwinner = Player {0} wins round {1}!
 
+start=start
+start_quiz=start quiz
+
 unknown=Unknown
 
 won_rounds=rounds won
