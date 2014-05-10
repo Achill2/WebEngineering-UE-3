@@ -1,37 +1,59 @@
+birthdate=Geburtstag
+
 category=Kategorie
 correct=Richtig
 
 end_of_game=Spielende
 
+female=weiblich
 final_result=Endstand
+firstname=Vorname
 
 gamewinner=Spieler {0} gewinnt!
 
 incorrect=Falsch
 
+Login=Anmelden
+login_data=Login Daten
+
+jump_to_login=Zum Login springen
 jump_to_question=Zur Frage springen
+jump_to_registration=Zur Registrierung springen
 jump_to_roundresult=Zur Rundenwertung springen
 jump_to_gameresult=Zur Spielwertung springen
 
 last_game=Letztes Spiel
+lastname=Nachname
 logout=Abmelden
+
+male=männlich
+marked_mandatory_fields=Mit "*" markierte Felder sind Pflichtfelder
 
 never=Nie
 new_game=Neues Spiel
 next=Weiter
+not_registered=nicht registriert
 
+password=Passwort
+personal_data=Persönliche Daten
 player_information=Spielerinformationen
 preliminary_result=Zwischenergebnis
 preliminary_roundresult=Rundenzwischenergebnis
 
 question=Frage
 
+register=Registrieren
+registration=Registrierung
 remaining_time=Verbleibende Zeit
 roundwinner = Spieler {0} gewinnt Runde {1}!
 
+sex=Geschlecht
 start=Start
 start_quiz=Quiz starten
 
+to_registration=Zur Registrierung
+
 unknown=Unbekannt
+username=Benutzername
 
 won_rounds=Gewonnene Runden

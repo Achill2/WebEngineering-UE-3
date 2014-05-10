@@ -1,5 +1,6 @@
 @(userForm: Form[PlayUser])
 @import helper._
+@import play.i18n._
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
@@ -7,37 +8,37 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Business Informatics Group Quiz - Registrieren</title>
+        <title>Business Informatics Group Quiz - @Messages.get("register")</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")" />
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/framework.js" type="text/javascript"></script>
     </head>
     <body id="registerpage">
-        <a class="accessibility" href="#register">Zur Registrierung springen</a>
+        <a class="accessibility" href="#register">@Messages.get("jump_to_registration")</a>
         <header role="banner" aria-labelledby="mainheading"><h1 id="mainheading"><span class="accessibility">Business Informatics Group</span> Quiz</h1></header>
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="loginlink" title="Klicke hier um dich anzumelden" href="#" accesskey="l">Anmelden</a></li>
+                <li><a id="loginlink" title="Klicke hier um dich anzumelden" href="#" accesskey="l">@Messages.get("Login")</a></li>
             </ul>
         </nav>
         <section role="main" id="register" aria-labelledby="registerheading">
             <!-- Register section -->
-            <h2 id="registerheading" class="accessibility">Registrierung</h2>
+            <h2 id="registerheading" class="accessibility">@Messages.get("registration")</h2>
             
             @form(routes.Application.register){
 @**            <form action="@{routes.Login.completeRegistration()}" method="POST">	**@
                 <fieldset>
-                    <legend>Persönliche Daten</legend>
+                    <legend>@Messages.get("personal_data")</legend>
                     
-                    @inputText(userForm("firstName"), '_label -> "Vorname:")
-                    @inputText(userForm("lastName"), '_label -> "Nachname:")
-                    @inputText(userForm("birthDate"), '_label -> "Geburtstag:")
+                    @inputText(userForm("firstName"), '_label -> (Messages.get("firstname")+":"))
+                    @inputText(userForm("lastName"), '_label -> (Messages.get("lastname")+":"))
+                    @inputText(userForm("birthDate"), '_label -> (Messages.get("birthdate")+":"))
 
                     @select(
                     	userForm("gender"),
-                    	options(Seq("Männlich", "Weiblich")),
-                    	'_label -> "Geschlecht:",
+                    	options(Seq(Messages.get("male"), Messages.get("female"))),
+                    	'_label -> (Messages.get("sex")+":"),
                     	'_showConstraints -> false
                     )
 
@@ -60,10 +61,10 @@
 ************************************************************************@
                 </fieldset>
                 <fieldset>
-                    <legend>Login Daten</legend>
+                    <legend>@Messages.get("login_data")</legend>
                     
-                    @inputText(userForm("userName"), '_label -> "Benutzername:", '_showConstraints -> false)
-                    @inputPassword(userForm("password"), '_label -> "Passwort:", '_showConstraints -> false)
+                    @inputText(userForm("userName"), '_label -> (Messages.get("username")+":"), '_showConstraints -> false)
+                    @inputPassword(userForm("password"), '_label -> (Messages.get("password")+":"), '_showConstraints -> false)
                     
 @**************************************************************************                    
                     <label for="username">Benutzername*:</label>
@@ -75,8 +76,8 @@
                     <div id="error_msg_password" class="hide" role="alert">Das Passwort muss mindestens 4 Zeichen und darf maximal 8 Zeichen enthalten.</div>
 **************************************************************************@
 
-                    <input id="registersubmit" type="submit" value="Registrieren" accesskey="s"/>
-                    <p id="requiredhint">Mit "*" gekennzeichnete Felder sind Pflichtfelder</p>
+                    <input id="registersubmit" type="submit" value=@Messages.get("register") accesskey="s"/>
+                    <p id="requiredhint">@Messages.get("marked_mandatory_fields")</p>
                 </fieldset>
 @**            </form>	**@
 				}

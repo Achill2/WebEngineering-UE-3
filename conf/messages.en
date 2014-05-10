@@ -1,38 +1,60 @@
+birthdate=birthdate
+
 category=Category
 correct=Correct
 
 end_of_game=end of game
 
+female=female
 final_result=Endstand
+firstname=firstname
 
 gamewinner=Player {0} wins!
 
 incorrect=Incorrect
 
+Login=Login
+login_data=login data
+
+jump_to_login=jump to the login
 jump_to_question=jump to the question
+jump_to_registration=jump to the registration
 jump_to_roundresult=jump to the result of the round
 jump_to_gameresult=jump to the result of the game
 
 last_game=last game
+lastname=lastname
 logout=Logout
+
+male=male
+marked_mandatory_fields=Fields marked with "*" are mandatory
 
 never=never
 new_game=new game
 next=next
+not_registered=not registered
 
+password=password
+personal_data=personal data
 player_information=Player information
 preliminary_result=preliminary result
 preliminary_roundresult=Preliminary round-result
 
 question=question
 
+register=register
+registration=registration
 remaining_time=remaining time
 roundwinner = Player {0} wins round {1}!
 
+sex=sex
 start=start
 start_quiz=start quiz
 
+to_registration=to registration
+
 unknown=Unknown
+username=username
 
 won_rounds=rounds won
 

@@ -1,5 +1,7 @@
 @(form: Form[Application.Login])
 
+@import play.i18n._
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -10,12 +12,12 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")" />
     </head>
     <body id="loginpage">
-        <a class="accessibility" href="#login">Zum Login springen</a>
+        <a class="accessibility" href="#login">@Messages.get("jump_to_login")</a>
         <header role="banner" aria-labelledby="mainheading"><h1 id="mainheading"><span class="accessibility">Business Informatics Group</span> Quiz</h1></header>
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="registerlink" title="Klicke hier um dich zu registrieren" href="register.html" accesskey="r">Registrieren</a></li>
+                <li><a id="registerlink" title="Klicke hier um dich zu registrieren" href="register.html" accesskey="r">@Messages.get("register")</a></li>
             </ul>
         </nav>
         <!-- Login section -->
@@ -27,8 +29,8 @@
                         <legend id="loginheading">Login</legend>
 
 @**
-						@inputText(userForm("userName"), '_label -> "Benutzername:", '_showConstraints -> false)
-						@inputPassword(userForm("password"), '_label -> "Passwort", '_showConstraints -> false)
+						@inputText(userForm("userName"), 'id -> "username:", '_showConstraints -> false)
+						@inputPassword(userForm("password"), 'id -> "password", '_showConstraints -> false)
 **@
 
 						@if(form.hasGlobalErrors){
@@ -37,22 +39,22 @@
 							</p>
 						}
 
-                        <label for="username">Benutzername:</label>
+                        <label for="username">@Messages.get("username"):</label>
                         <input id="username" name="userName" type="text" required="required"/>
-                        <label for="password">Passwort:</label>
+                        <label for="password">@Messages.get("password"):</label>
                         <input id="password" name="password" type="password" required="required"/>
 
-                        <input id="loginsubmit" type="submit" value="Anmelden"/>
+                        <input id="loginsubmit" type="submit" value=@Messages.get("Login") />
                     </fieldset>
 @**                </form>	**@
             	}
             </section>
             <!-- Register section -->
             <section id="register" aria-labelledby="registerheading">
-                <h2 id="registerheading" class="accessibility">Registrierung</h2>
-                <p>Nicht registriert?</p>
+                <h2 id="registerheading" class="accessibility">@Messages.get("registration")</h2>
+                <p>@Messages.get("not_registered")?</p>
                 <form action="@{routes.Application.goToRegistration()}" method="GET">
-                	<input type="submit" id="register" name="action" value="Zur Registierung"/>
+                	<input type="submit" id="register" name="action" value=@Messages.get("to_registration") />
                 </form>
             </section>
         </section>

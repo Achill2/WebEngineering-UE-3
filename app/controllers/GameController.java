@@ -26,7 +26,7 @@ public class GameController extends Controller {
 	
 	public static Result index(){
 		
-		return ok(index.render(session().get("userName")));
+		return ok(index.render(request().username()));
 	}
 	
 	/**
@@ -34,14 +34,14 @@ public class GameController extends Controller {
 	 * @return
 	 */
 	public static Result showQuestion() {
-		
+		Logger.info("request username: " + request().username());
 
 
 		// check if a game is running
 		if (game == null || game.isGameOver()) {
 			// if not generate new Game
 			User user = new SimpleUser(); 		// TODO besser einbinden - ist jetzt einfach an dieser Stelle zum Testen 
-			user.setName(session().get("userName"));
+			user.setName(request().username());
 			
 			// generate new game TODO path angabe ausbessern?!
 //			Logger.info("sprache " + Messages.get("start_game"));
