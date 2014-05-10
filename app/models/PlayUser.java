@@ -28,7 +28,7 @@ public class PlayUser implements User {
 	public String firstName;
 
 	@Formats.DateTime(pattern = "dd.mm.yyyy")
-	public Date birthDay;
+	public Date birthDate;
 	//public String gender;
 
 	/**

@@ -33,7 +33,7 @@
                     
                     @inputText(userForm("firstName"), '_label -> (Messages.get("firstname")+":"))
                     @inputText(userForm("lastName"), '_label -> (Messages.get("lastname")+":"))
-                    @inputText(userForm("birthDate"), '_label -> (Messages.get("birthdate")+":"))
+                    @inputText(userForm("birthDate"), '_label -> (Messages.get("birthdate")+":"), '_showConstraints -> false)
 
                     @select(
                     	userForm("gender"),
