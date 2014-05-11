@@ -3,6 +3,11 @@ birthdate=Geburtstag
 category=Kategorie
 correct=Richtig
 
+error.invalid.java.util.Date=ungültiges Datum (benutzen Sie das Format: tt.mm.jjjj)
+error.maxLength=Maximal {0} Zeichen
+error.minLength=Mindestens {0} Zeichen
+error.pattern=Bitte verwenden Sie folgendes Eingabemuster: {0}
+error.required=Dieses Feld ist ein Pflichtfeld
 end_of_game=Spielende
 
 female=weiblich

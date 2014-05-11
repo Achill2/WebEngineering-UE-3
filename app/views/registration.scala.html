@@ -19,7 +19,7 @@
         <nav role="navigation" aria-labelledby="navheading">
             <h2 id="navheading" class="accessibility">Navigation</h2>
             <ul>
-                <li><a id="loginlink" title="Klicke hier um dich anzumelden" href="#" accesskey="l">@Messages.get("Login")</a></li>
+                <li><a id="loginlink" title="Klicke hier um dich anzumelden" href="/login" accesskey="l">@Messages.get("Login")</a></li>
             </ul>
         </nav>
         <section role="main" id="register" aria-labelledby="registerheading">
@@ -34,6 +34,7 @@
                     @inputText(userForm("firstName"), '_label -> (Messages.get("firstname")+":"))
                     @inputText(userForm("lastName"), '_label -> (Messages.get("lastname")+":"))
                     @inputText(userForm("birthDate"), '_label -> (Messages.get("birthdate")+":"), '_showConstraints -> false)
+                    
 
                     @select(
                     	userForm("gender"),
@@ -41,24 +42,6 @@
                     	'_label -> (Messages.get("sex")+":"),
                     	'_showConstraints -> false
                     )
-
-@**********************************************************************
-                    <label for="firstname">Vorname:</label>
-                    <input id="firstname" type="text" name="firstName"/>
-                    
-                    <label for="lastname">Nachname:</label>
-                    <input id="lastname" type="text" name="lastName"/>
-                    
-                    <label for="birthdate">Geburtstag:</label>
-                    <input id="birthdate" type="date" name="birthDate"/>
-                    <div id="error_msg_birthdate" class="hide" role="alert">Verwenden Sie bitte folgendes Datumsformat: dd.mm.yyyy (z.B. 24.12.2012).</div>
-                    
-                    <label for="gender">Geschlecht:</label>
-                    <select id="gender" name="gender">
-                        <option value="m">Männlich</option>
-                        <option value="f">Weiblich</option>
-                    </select>
-************************************************************************@
                 </fieldset>
                 <fieldset>
                     <legend>@Messages.get("login_data")</legend>
