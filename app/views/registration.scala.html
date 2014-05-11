@@ -1,4 +1,4 @@
-@(userForm: Form[PlayUser])
+@(userForm: Form[PlayUser], error: String)
 @import helper._
 @import play.i18n._
 
@@ -46,6 +46,12 @@
                 <fieldset>
                     <legend>@Messages.get("login_data")</legend>
                     
+                    @if(error.equals("usernameError")){
+                    	<p class="error">
+							@Messages.get("error.username_in_use")
+						</p>
+                    }
+                    
                     @inputText(userForm("userName"), '_label -> (Messages.get("username")+"*:"), '_showConstraints -> false)
                     @inputPassword(userForm("password"), '_label -> (Messages.get("password")+"*:"), '_showConstraints -> false)
                     
@@ -58,6 +64,12 @@
                     <input id="password" type="password" required="required" pattern="\w{4,8}" name="password"/>
                     <div id="error_msg_password" class="hide" role="alert">Das Passwort muss mindestens 4 Zeichen und darf maximal 8 Zeichen enthalten.</div>
 **************************************************************************@
+
+					@if(userForm.hasGlobalErrors){
+							<p class="error">
+								@userForm.globalError.message
+							</p>
+					}
 
                     <input id="registersubmit" type="submit" value=@Messages.get("register") accesskey="s"/>
                     <p id="requiredhint">@Messages.get("marked_mandatory_fields")</p>

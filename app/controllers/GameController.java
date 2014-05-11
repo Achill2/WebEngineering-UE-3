@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.AnswerData;
-import akka.util.Collections;
-import at.ac.tuwien.big.we14.lab2.api.*;
-import at.ac.tuwien.big.we14.lab2.api.impl.*;
 import play.Logger;
 import play.data.Form;
 import play.mvc.Controller;
@@ -16,7 +13,14 @@ import views.html.index;
 import views.html.quiz;
 import views.html.quizover;
 import views.html.roundover;
-import play.api.i18n.*;
+import at.ac.tuwien.big.we14.lab2.api.Choice;
+import at.ac.tuwien.big.we14.lab2.api.Question;
+import at.ac.tuwien.big.we14.lab2.api.QuizFactory;
+import at.ac.tuwien.big.we14.lab2.api.QuizGame;
+import at.ac.tuwien.big.we14.lab2.api.Round;
+import at.ac.tuwien.big.we14.lab2.api.User;
+import at.ac.tuwien.big.we14.lab2.api.impl.PlayQuizFactory;
+import at.ac.tuwien.big.we14.lab2.api.impl.SimpleUser;
 
 @Security.Authenticated(Secured.class)
 public class GameController extends Controller {

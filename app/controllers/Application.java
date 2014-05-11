@@ -45,7 +45,7 @@ public class Application extends Controller {
 	public static Result goToRegistration() {
 		
 		Form<PlayUser> userForm = form(PlayUser.class);
-		return ok(registration.render(userForm));
+		return ok(registration.render(userForm, "noError"));
 	}
 	
 	@Transactional
@@ -53,10 +53,10 @@ public class Application extends Controller {
 
 		Form<PlayUser> userForm = form(PlayUser.class).bindFromRequest();
 		if (userForm.hasErrors())
-			return badRequest(registration.render(userForm));
+			return badRequest(registration.render(userForm, "formError"));
 		
 		if(PlayUser.findByUserName(userForm.get().userName) != null)
-			return badRequest(registration.render(userForm));
+			return badRequest(registration.render(userForm, "usernameError"));
 		
 		userForm.get().save();
 		

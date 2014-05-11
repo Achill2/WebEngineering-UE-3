@@ -3,11 +3,14 @@ birthdate=Birthdate
 category=Category
 correct=Correct
 
+
 error.invalid.java.util.Date=Invalid Date (use the pattern dd.mm.yyyy)
 error.maxLength=Maximum length is {0}
 error.minLength=Minimum length is {0}
 error.pattern=Please use this pattern: {0}
 error.required=This field is required
+error.username_in_use=This username is in use! Please select an another username!
+error.username_password_failure=Invaid username or password!
 end_of_game=End of the Game
 
 female=female
