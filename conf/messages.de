@@ -3,7 +3,7 @@ birthdate=Geburtstag
 category=Kategorie
 correct=Richtig
 
-error.invalid.java.util.Date=ungültiges Datum (benutzen Sie das Format: tt.mm.jjjj)
+error.invalid.java.util.Date=Ungültiges Datum (benutzen Sie das Format: tt.mm.jjjj)
 error.maxLength=Maximal {0} Zeichen
 error.minLength=Mindestens {0} Zeichen
 error.pattern=Bitte verwenden Sie folgendes Eingabemuster: {0}
@@ -35,7 +35,7 @@ male=männlich
 marked_mandatory_fields=Mit "*" markierte Felder sind Pflichtfelder
 
 never=Nie
-new_game=Neues Spiel
+new_game=Neues&nbsp;Spiel
 next=Weiter
 not_registered=nicht registriert
 
@@ -50,13 +50,13 @@ question=Frage
 register=Registrieren
 registration=Registrierung
 remaining_time=Verbleibende Zeit
-roundwinner = Spieler {0} gewinnt Runde {1}!
+roundwinner=Spieler {0} gewinnt Runde {1}!
 
 sex=Geschlecht
 start=Start
-start_quiz=Quiz starten
+start_quiz=Quiz&nbsp;starten
 
-to_registration=Zur Registrierung
+to_registration=Zur&nbsp;Registrierung
 
 unknown=Unbekannt
 username=Benutzername

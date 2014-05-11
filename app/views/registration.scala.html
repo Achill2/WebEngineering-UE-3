@@ -46,8 +46,8 @@
                 <fieldset>
                     <legend>@Messages.get("login_data")</legend>
                     
-                    @inputText(userForm("userName"), '_label -> (Messages.get("username")+":"), '_showConstraints -> false)
-                    @inputPassword(userForm("password"), '_label -> (Messages.get("password")+":"), '_showConstraints -> false)
+                    @inputText(userForm("userName"), '_label -> (Messages.get("username")+"*:"), '_showConstraints -> false)
+                    @inputPassword(userForm("password"), '_label -> (Messages.get("password")+"*:"), '_showConstraints -> false)
                     
 @**************************************************************************                    
                     <label for="username">Benutzername*:</label>

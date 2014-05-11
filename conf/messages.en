@@ -1,71 +1,64 @@
-birthdate=birthdate
+birthdate=Birthdate
 
 category=Category
 correct=Correct
 
-error.invalid.java.util.Date=invalid Date (use the pattern dd.mm.yyyy)
+error.invalid.java.util.Date=Invalid Date (use the pattern dd.mm.yyyy)
 error.maxLength=Maximum length is {0}
 error.minLength=Minimum length is {0}
 error.pattern=Please use this pattern: {0}
 error.required=This field is required
-end_of_game=end of game
+end_of_game=End of the Game
 
 female=female
-final_result=Endstand
-firstname=firstname
+final_result=Final Result
+firstname=Firstname
 
 gamewinner=Player {0} wins!
 
 incorrect=Incorrect
 
 Login=Login
-login_data=login data
+login_data=Login data
 
-jump_to_login=jump to the login
-jump_to_question=jump to the question
-jump_to_registration=jump to the registration
-jump_to_roundresult=jump to the result of the round
-jump_to_gameresult=jump to the result of the game
+jump_to_login=Jump to the login
+jump_to_question=Jump to the question
+jump_to_registration=Jump to the registration
+jump_to_roundresult=Jump to the result of the round
+jump_to_gameresult=Jump to the result of the game
 
-last_game=last game
-lastname=lastname
+last_game=Last game
+lastname=Lastname
 logout=Logout
 
 male=male
 marked_mandatory_fields=Fields marked with "*" are mandatory
 
-never=never
-new_game=new game
-next=next
+never=Never
+new_game=New&nbsp;game
+next=Next
 not_registered=not registered
 
-password=password
-personal_data=personal data
+password=Password
+personal_data=Personal data
 player_information=Player information
-preliminary_result=preliminary result
+preliminary_result=Preliminary result
 preliminary_roundresult=Preliminary round-result
 
-question=question
+question=Question
 
-register=register
-registration=registration
-remaining_time=remaining time
-roundwinner = Player {0} wins round {1}!
+register=Register
+registration=Registration
+remaining_time=Remaining time
+roundwinner=Player {0} wins round {1}!
 
-sex=sex
-start=start
-start_quiz=start quiz
+sex=Gender
+start=Start
+start_quiz=Start&nbsp;quiz
 
-to_registration=to registration
+to_registration=To&nbsp;registration
 
 unknown=Unknown
-username=username
+username=Username
 
-won_rounds=rounds won
-
-
-
-
-
-
-
+won_rounds=Rounds won

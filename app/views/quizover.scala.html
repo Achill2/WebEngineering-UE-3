@@ -46,7 +46,7 @@
                     <p id="player2roundcounter" class="playerroundcounter">@Messages.get("won_rounds"): <span id="player2wonrounds" class="playerwonrounds">@game.getWonRounds(game.getPlayers().get(1))</span></p>
                 </div>
                  <form action="@routes.GameController.showQuestion()" method="GET">
-	       			<input type="submit" id="next" name="action" accesskey="n" value=@Messages.get("new_game")/>
+	       			<input type="submit" id="next" name="action" accesskey="n" value=@Html(Messages.get("new_game")) />
 	        	</form>
             </section>
         </section>

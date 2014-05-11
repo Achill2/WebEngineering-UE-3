@@ -29,7 +29,7 @@ public class PlayUser implements User {
 
 	@Formats.DateTime(pattern = "dd.mm.yyyy")
 	public Date birthDate;
-	//public String gender;
+	public String gender;
 
 	/**
 	 * Finds user from the database relative to its username

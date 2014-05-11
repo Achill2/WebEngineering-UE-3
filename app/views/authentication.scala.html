@@ -1,5 +1,4 @@
 @(form: Form[Application.Login])
-
 @import play.i18n._
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -54,7 +53,7 @@
                 <h2 id="registerheading" class="accessibility">@Messages.get("registration")</h2>
                 <p>@Messages.get("not_registered")?</p>
                 <form action="@{routes.Application.goToRegistration()}" method="GET">
-                	<input type="submit" id="register" name="action" value=@Messages.get("to_registration") />
+                	<input type="submit" id="register" name="action" value=@Html(Messages.get("to_registration")) />
                 </form>
             </section>
         </section>
